@@ -42,7 +42,7 @@ abstract class AbstractAzisabaPayPayAPI : AzisabaPayPayAPI {
         if (details.resultInfo.code != "SUCCESS") {
             error("Something went wrong (code: ${details.resultInfo.code})")
         }
-        getScheduler().scheduleRepeatingTask(1000 * 15, 1000 * 20) {
+        getScheduler().scheduleRepeatingTask(1000 * 30, 1000 * 30) {
             try {
                 val response = paymentApi.getCodesPaymentDetails(paymentId)
                 if (response.resultInfo.code != "SUCCESS") {
