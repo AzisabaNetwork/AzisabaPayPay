@@ -6,6 +6,7 @@ import net.azisaba.paypay.api.AzisabaPayPayAPIProvider
 import net.azisaba.paypay.api.Logger
 import net.azisaba.paypay.spigot.SpigotPlugin
 import org.bukkit.Bukkit
+import org.bukkit.Material
 import org.bukkit.plugin.java.JavaPlugin
 import java.net.URL
 import java.nio.charset.StandardCharsets
@@ -13,6 +14,8 @@ import java.util.concurrent.CompletableFuture
 import javax.net.ssl.HttpsURLConnection
 
 object Util {
+    fun getMaterial(type: String): Material = java.lang.Enum.valueOf(Material::class.java, type)
+
     fun <R> runSync(action: () -> R) : CompletableFuture<R> {
         val future = CompletableFuture<R>()
         Bukkit.getScheduler().runTask(JavaPlugin.getPlugin(SpigotPlugin::class.java)) {

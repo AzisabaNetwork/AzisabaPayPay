@@ -1,7 +1,7 @@
 package net.azisaba.paypay.spigot.config
 
 import kotlinx.serialization.Serializable
-import org.bukkit.Material
+import net.azisaba.paypay.spigot.util.Util
 
 @Serializable
 data class CategoryInfo(
@@ -9,7 +9,7 @@ data class CategoryInfo(
     val material: String,
     val products: List<ProductInfo>,
 ) {
-    fun getActualMaterial() = Material.valueOf(material.uppercase())
+    fun getActualMaterial() = Util.getMaterial(material.uppercase())
 
     init {
         getActualMaterial()

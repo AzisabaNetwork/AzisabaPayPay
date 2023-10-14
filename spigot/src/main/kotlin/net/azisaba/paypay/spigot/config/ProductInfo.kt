@@ -1,9 +1,9 @@
 package net.azisaba.paypay.spigot.config
 
 import kotlinx.serialization.Serializable
+import net.azisaba.paypay.spigot.util.Util
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
-import org.bukkit.Material
 import org.bukkit.entity.Player
 
 @Serializable
@@ -21,7 +21,7 @@ data class ProductInfo(
     fun getNameWithoutColor(): String = ChatColor.stripColor(getColoredName())
     fun getColoredLore(): List<String> = lore.map { ChatColor.translateAlternateColorCodes('&', it) }
 
-    fun getActualMaterial() = Material.valueOf(material.uppercase())
+    fun getActualMaterial() = Util.getMaterial(material.uppercase())
 
     fun execute(player: Player) {
         commands.forEach { command ->
