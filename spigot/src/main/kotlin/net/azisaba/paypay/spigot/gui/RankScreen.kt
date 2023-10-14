@@ -49,7 +49,7 @@ class RankScreen(private val player: Player) : ShopScreen(ShopType.Rank, "ラン
             "§7アジ鯖に100円寄付したものに送られる称号。",
             "",
             "§6§n全鯖共通",
-            "§f- 名前の最初に§8[§1100円皿§8]§eがつき、名前も同じ色になる",
+            "§f- §e名前の最初に§8[§1100円皿§8]§eがつき、名前も同じ色になる",
             "",
             "§6§nLGW",
             "§f- §1100円HANABI§eがもらえる",
@@ -60,24 +60,111 @@ class RankScreen(private val player: Player) : ShopScreen(ShopType.Rank, "ラン
             "§7アジ鯖に500円寄付したものに送られる称号。",
             "",
             "§6§n全鯖共通",
-            "§f- 名前の最初に§8[§b500円皿§8]§eがつき、名前も同じ色になる",
+            "§f- §e名前の最初に§8[§b500円皿§8]§eがつき、名前も同じ色になる",
             "",
             "§6§nLGW",
             "§f- §b500円HANABI§eがもらえる",
             "§f- §d寄付ガチャチケット§eが3枚もらえる",
             "§f- §b/h§eコマンドで500円皿専用のパーティクルがアクセス可能になる",
         ),
+        "1000yen" to listOf(
+            "§7アジ鯖に1000円寄付したものに送られる称号。",
+            "",
+            "§6§n全鯖共通",
+            "§f- §e名前の最初に§8[§a1000円皿§8]§eがつき、名前も同じ色になる",
+            "",
+            "§6§nLGW",
+            "§f- §a1000円HANABI§eがもらえる",
+            "§f- §d寄付ガチャチケット§eが5枚もらえる",
+            "§f- §b/h§eコマンドで1000円皿専用のパーティクルがアクセス可能になる",
+            "§f- §b/hat§eコマンドが使用可能になる(アイテムを頭にかぶることができる)",
+        ),
+        "2000yen" to listOf(
+            "§7アジ鯖に2000円寄付したものに送られる称号。",
+            "",
+            "§6§n全鯖共通",
+            "§f- §e名前の最初に§8[§d2000円皿§8]§eがつき、名前も同じ色になる",
+            "",
+            "§6§nLGW",
+            "§f- §d2000円HANABI§eがもらえる",
+            "§f- §d寄付ガチャチケット§eが10枚もらえる",
+            "§f- §b/h§eコマンドで2000円皿専用のパーティクルがアクセス可能になる",
+            "§f- §b/hat§eコマンドが使用可能になる(アイテムを頭にかぶることができる)",
+        ),
+        "5000yen" to listOf(
+            "§7アジ鯖に5000円寄付したものに送られる称号。",
+            "",
+            "§6§n全鯖共通",
+            "§f- §e名前の最初に§8[§55000円皿§8]§eがつき、名前も同じ色になる",
+            "§f- §eチャットでカラーコードと装飾コードが使えるようになる",
+            "",
+            "§6§nLGW",
+            "§f- §55000円HANABI§eがもらえる",
+            "§f- §d寄付ガチャチケット§eが20枚もらえる",
+            "§f- §b/h§eコマンドで5000円皿専用のパーティクルがアクセス可能になる",
+            "§f- §b/hat§eコマンドが使用可能になる(アイテムを頭にかぶることができる)",
+            "§f- §6DOROKUN§eがもらえる"
+        ),
+        "10000yen" to listOf(
+            "§7アジ鯖に5000円寄付したものに送られる称号。",
+            "",
+            "§6§n全鯖共通",
+            "§f- §e名前の最初に§8[§610000円皿§8]§eがつき、名前も同じ色になる",
+            "§f- §eチャットでカラーコードと装飾コードが使えるようになる",
+            "",
+            "§6§nLGW",
+            "§f- §610000円HANABI§eがもらえる",
+            "§f- §d寄付ガチャチケット§eが32枚もらえる",
+            "§f- §b/h§eコマンドで5000円皿専用のパーティクルがアクセス可能になる",
+            "§f- §b/hat§eコマンドが使用可能になる(アイテムを頭にかぶることができる)",
+            "§f- §6カボチャ爆弾§eがもらえる"
+        ),
         "50000yen" to listOf(
             "§7アジ鯖に50000円寄付したものに送られる称号。",
             "",
             "§6§n全鯖共通",
-            "§f- §e名前の最初に§8[§25§a0§20§a0§20§a円§2皿§8]§eがつき、名前も同じ色になる",
+            "§f- §e名前の最初に§8[§25§a0§20§a0§20§a円§2皿§8]§eがつき、名前が§2緑色§eになる",
             "§f- §eチャットでカラーコードと装飾コードが使えるようになる",
             "",
             "§6§nLGW",
             "§f- §d寄付ガチャチケット§eが128枚もらえる",
             "§f- §b/h§eコマンドで50000円皿専用のパーティクルがアクセス可能になる",
             "§f- §b/hat§eコマンドが使用可能になる(アイテムを頭にかぶることができる)",
+        ),
+        "changegamingsara" to listOf(
+            "§7アジ鯖に人生を捧げるゲーマーに送られる称号。",
+            "",
+            "§6§n全鯖共通",
+            "§f- §e名前の最初に§8[§9§lゲ§2§lー§a§lミ§e§lン§4§lグ§8]§eがつき、名前が§b水色§eになる",
+            "§f- §eチャットでカラーコードと装飾コードが使えるようになる",
+            "§f- §b/gamingsara§eでゲーミングランクの表示",
+            "",
+            "§6§nLife",
+            "§f- §eニックネームでカラーコードと日本語が使用可能になる",
+        ),
+        null /* nitro */ to listOf(
+            "§7アジ鯖に毎月寄付している者に送られる称号。",
+            "",
+            "§6§n全鯖共通",
+            "§f- §e名前の最初に§8[§3Nitro§6§l⚡§8]§eがつき、名前も同じ色になる",
+            "§f- §eチャットでカラーコードと装飾コードが使えるようになる",
+            "§f- §b/togglenitro§eでランクの表示/非表示の切り替え",
+            "§f- §eほぼすべてのサーバーで名前の最初に着くPrefixを自由に変更できるようになる",
+            " §f §b/setprefix (新しいprefix)§eで設定、§b/clearprefix§eで削除 (globalよりもこちらが優先)",
+            " §f §b/setglobalprefix (新しいprefix)§eで設定、§b/clearglobalprefix§eで削除",
+            "§f- §eギルドチャットの公開設定",
+            " §f §b/guild_test open§eで§b/guild_test join (ギルド名)§eで招待無しで参加可能になる",
+            "§f- §bbeta.azisaba.net§eの接続権",
+            " §f §e今後ベータ版のサーバーが先行公開する際に参加可能になります。",
+            "",
+            "§6§nロビー",
+            "§f- §eロビーサーバーで飛行できるようになる",
+            "§f- §eロビーのログインメッセージ変更(固定)",
+            "",
+            "§6§nLife",
+            "§f- §eニックネームでカラーコードと日本語が使用可能になる",
+            "",
+            "§dPayPayでは継続課金ではなく、30日が追加される形となります。",
         ),
     )
     private val slots = mutableMapOf(
@@ -123,13 +210,13 @@ class RankScreen(private val player: Player) : ShopScreen(ShopType.Rank, "ラン
                 error("Failed to send packet")
             }
         },
-        38 to SlotData(Material.EMERALD, 3000, "§9§lゲ§2§lー§a§lミ§e§lン§4§lグ", "changegamingsara") {
+        38 to SlotData(Material.EMERALD, 3000, "§9§lゲ§2§lー§a§lミ§e§lン§4§lグ§eランク", "changegamingsara") {
             val player = AziPluginMessagingProvider.get().getPlayerAdapter(Player::class.java).get(it)
             if (!Protocol.P_GIVE_GAMING_SARA.sendPacket(AziPluginMessagingProvider.get().server.packetSender, PlayerMessage(player))) {
                 error("Failed to send packet")
             }
         },
-        42 to SlotData(Material.EMERALD, 500, "§3Nitro§6§l⚡ §e(30日間)", "changenitro") {
+        42 to SlotData(Material.EMERALD, 500, "§3Nitro§6§l⚡ §e(30日間)", null) {
             val player = AziPluginMessagingProvider.get().getPlayerAdapter(Player::class.java).get(it)
             if (!Protocol.P_GIVE_NITRO_SARA.sendPacket(AziPluginMessagingProvider.get().server.packetSender, ProxyboundGiveNitroSaraMessage(player, 30, TimeUnit.DAYS))) {
                 error("Failed to send packet")
@@ -145,7 +232,7 @@ class RankScreen(private val player: Player) : ShopScreen(ShopType.Rank, "ラン
             } else {
                 data.price
             }
-            val lorePrice = if (player.hasPermission("group.${data.groupName}")) {
+            val lorePrice = if (data.groupName != null && player.hasPermission("group.${data.groupName}")) {
                 "§c購入済み"
             } else if (data.price == actualPrice) {
                 "§6価格: §a${actualPrice}円"
@@ -183,7 +270,7 @@ class RankScreen(private val player: Player) : ShopScreen(ShopType.Rank, "ラン
             val data = screen.slots[e.slot] ?: return
             val actualPrice = data.getActualPrice(e.whoClicked as Player)
             if (actualPrice > data.price) error("actualPrice ($actualPrice) is higher than package price (${data.price})")
-            if (actualPrice <= 0 || e.whoClicked.hasPermission("group.${data.groupName}")) {
+            if (actualPrice <= 0 || (data.groupName != null && e.whoClicked.hasPermission("group.${data.groupName}"))) {
                 return e.whoClicked.sendMessage("§cこの商品は既に購入済みです！")
             }
             e.whoClicked.closeInventory()
@@ -213,7 +300,7 @@ class RankScreen(private val player: Player) : ShopScreen(ShopType.Rank, "ラン
         }
     }
 
-    data class SlotData(val type: Material, val price: Int, val name: String, val groupName: String, val action: (player: Player) -> Unit) {
+    data class SlotData(val type: Material, val price: Int, val name: String, val groupName: String?, val action: (player: Player) -> Unit) {
         fun getActualPrice(player: Player) =
             if (type == Material.DIAMOND) {
                 price - getSaraPriceReduction(player)
