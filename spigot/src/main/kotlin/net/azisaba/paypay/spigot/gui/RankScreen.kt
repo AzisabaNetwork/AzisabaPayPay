@@ -106,7 +106,7 @@ class RankScreen(private val player: Player) : ShopScreen(ShopType.Rank, "ラン
             "§f- §6DOROKUN§eがもらえる"
         ),
         "10000yen" to listOf(
-            "§7アジ鯖に5000円寄付したものに送られる称号。",
+            "§7アジ鯖に10000円寄付したものに送られる称号。",
             "",
             "§6§n全鯖共通",
             "§f- §e名前の最初に§8[§610000円皿§8]§eがつき、名前も同じ色になる",
