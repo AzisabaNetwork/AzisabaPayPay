@@ -123,13 +123,13 @@ class RankScreen(private val player: Player) : ShopScreen(ShopType.Rank, "ラン
                 error("Failed to send packet")
             }
         },
-        38 to SlotData(Material.EMERALD, 3000, "§9§lゲ§2§lー§a§lミ§e§lン§4§lグ", "gamingsara") {
+        38 to SlotData(Material.EMERALD, 3000, "§9§lゲ§2§lー§a§lミ§e§lン§4§lグ", "changegamingsara") {
             val player = AziPluginMessagingProvider.get().getPlayerAdapter(Player::class.java).get(it)
             if (!Protocol.P_GIVE_GAMING_SARA.sendPacket(AziPluginMessagingProvider.get().server.packetSender, PlayerMessage(player))) {
                 error("Failed to send packet")
             }
         },
-        42 to SlotData(Material.EMERALD, 500, "§3Nitro§6§l⚡ §e(30日間)", "nitro") {
+        42 to SlotData(Material.EMERALD, 500, "§3Nitro§6§l⚡ §e(30日間)", "changenitro") {
             val player = AziPluginMessagingProvider.get().getPlayerAdapter(Player::class.java).get(it)
             if (!Protocol.P_GIVE_NITRO_SARA.sendPacket(AziPluginMessagingProvider.get().server.packetSender, ProxyboundGiveNitroSaraMessage(player, 30, TimeUnit.DAYS))) {
                 error("Failed to send packet")
@@ -183,7 +183,7 @@ class RankScreen(private val player: Player) : ShopScreen(ShopType.Rank, "ラン
             val data = screen.slots[e.slot] ?: return
             val actualPrice = data.getActualPrice(e.whoClicked as Player)
             if (actualPrice > data.price) error("actualPrice ($actualPrice) is higher than package price (${data.price})")
-            if (actualPrice <= 0) {
+            if (actualPrice <= 0 || e.whoClicked.hasPermission("group.${data.groupName}")) {
                 return e.whoClicked.sendMessage("§cこの商品は既に購入済みです！")
             }
             e.whoClicked.closeInventory()
