@@ -11,5 +11,12 @@ interface AzisabaPayPayAPI {
      */
     fun createQRCode(amount: Int, currency: Currency, description: String, purchased: () -> Unit): String
 
+    fun cancelPayment(paymentId: String)
+
+    fun refundPayment(paymentId: String, reason: String)
+
     fun getScheduler(): Scheduler
+
+    fun onPaymentCompleted(paymentId: String, amount: Int, currency: Currency, description: String) {}
+    fun onPaymentCancelled(paymentId: String, amount: Int, currency: Currency, description: String) {}
 }

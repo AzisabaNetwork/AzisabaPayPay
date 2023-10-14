@@ -2,6 +2,7 @@ package net.azisaba.paypay.spigot.util
 
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
+import org.bukkit.inventory.meta.ItemMeta
 
 object ItemUtil {
     fun itemOf(type: Material, amount: Int = 1, durability: Short = 0, displayName: String? = null, lore: List<String> = emptyList()) =
@@ -16,4 +17,10 @@ object ItemUtil {
                 }
             }
         }
+
+    fun ItemMeta.setCustomModelData(data: Int?) {
+        try {
+            ItemMeta::class.java.getMethod("setCustomModelData", Integer::class.java).invoke(this, data)
+        } catch (ignored: ReflectiveOperationException) {}
+    }
 }

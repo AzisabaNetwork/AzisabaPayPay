@@ -7,6 +7,8 @@ import net.azisaba.azipluginmessaging.api.protocol.message.ProxyboundGiveNitroSa
 import net.azisaba.azipluginmessaging.api.protocol.message.ProxyboundGiveSaraMessage
 import net.azisaba.paypay.api.AzisabaPayPayAPIProvider
 import net.azisaba.paypay.api.Currency
+import net.azisaba.paypay.spigot.config.PluginConfig
+import net.azisaba.paypay.spigot.util.Util
 import net.md_5.bungee.api.chat.ClickEvent
 import net.md_5.bungee.api.chat.TextComponent
 import org.bukkit.Bukkit
@@ -20,7 +22,7 @@ import org.bukkit.event.inventory.InventoryDragEvent
 import org.bukkit.inventory.ItemStack
 import java.util.concurrent.TimeUnit
 
-class RankScreen(private val player: Player) : ShopScreen(ShopType.Rank) {
+class RankScreen(private val player: Player) : ShopScreen(ShopType.Rank, "ランク") {
     companion object {
         fun getSaraPriceReduction(player: Player): Int {
             if (player.hasPermission("group.50000yen")) {
@@ -189,6 +191,11 @@ class RankScreen(private val player: Player) : ShopScreen(ShopType.Rank) {
                 if (!(e.whoClicked as Player).isOnline) {
                     error("Player is offline")
                 }
+                Util.sendDiscordWebhookAsync(
+                    PluginConfig.instance.discordWebhookNotifyUrl,
+                    null,
+                    "Minecraft ID `${e.whoClicked.name}`の決済が完了しました。\n金額: ~~${data.price} JPY~~ $actualPrice JPY\n説明: ${ChatColor.stripColor(data.name)}",
+                )
                 data.action(e.whoClicked as Player)
                 Bukkit.broadcastMessage("§a§l${e.whoClicked.name}さんがPayPayで§d§l${actualPrice}円§a§l寄付しました！")
                 Bukkit.broadcastMessage("§a§l${e.whoClicked.name}さんありがとうございます！")

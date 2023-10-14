@@ -18,4 +18,8 @@ class SpigotScheduler(private val plugin: Plugin) : Scheduler {
             }
         }.runTaskTimerAsynchronously(plugin, delay / 50, period / 50)
     }
+
+    override fun schedule(action: () -> Unit) {
+        Bukkit.getScheduler().runTask(plugin, action)
+    }
 }
