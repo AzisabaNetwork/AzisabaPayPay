@@ -25,7 +25,7 @@ open class ShopScreen(type: ShopType, title: String) : InventoryHolder {
             if (index < 8) {
                 inventory.setItem(
                     index + 1,
-                    ItemUtil.itemOf(categoryInfo.getActualMaterial(), 1, 0, ChatColor.translateAlternateColorCodes('&', categoryInfo.name))
+                    ItemUtil.itemOf(categoryInfo.getActualMaterial(), 1, 0, "§a" + ChatColor.translateAlternateColorCodes('&', categoryInfo.name))
                 )
             }
         }
