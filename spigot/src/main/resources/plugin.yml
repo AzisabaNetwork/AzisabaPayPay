@@ -1,0 +1,8 @@
+name: AzisabaPayPay
+main: net.azisaba.paypay.spigot.SpigotPlugin
+version: @version@
+depend:
+  - AziPluginMessaging
+commands:
+  azisabapaypay:
+    permission: azisabapaypay.use
