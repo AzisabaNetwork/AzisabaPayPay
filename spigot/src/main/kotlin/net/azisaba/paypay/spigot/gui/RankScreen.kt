@@ -191,10 +191,15 @@ class RankScreen(private val player: Player) : ShopScreen(ShopType.Rank, "ラン
                 if (!(e.whoClicked as Player).isOnline) {
                     error("Player is offline")
                 }
+                val price = if (data.price != actualPrice) {
+                    "~~${data.price} JPY~~ $actualPrice JPY"
+                } else {
+                    "$actualPrice JPY"
+                }
                 Util.sendDiscordWebhookAsync(
                     PluginConfig.instance.discordWebhookNotifyUrl,
                     null,
-                    "Minecraft ID `${e.whoClicked.name}`の決済が完了しました。\n金額: ~~${data.price} JPY~~ $actualPrice JPY\n説明: ${ChatColor.stripColor(data.name)}",
+                    "Minecraft ID `${e.whoClicked.name}`の決済が完了しました。\n金額: $price\n説明: ${ChatColor.stripColor(data.name)}",
                 )
                 data.action(e.whoClicked as Player)
                 Bukkit.broadcastMessage("§a§l${e.whoClicked.name}さんがPayPayで§d§l${actualPrice}円§a§l寄付しました！")
