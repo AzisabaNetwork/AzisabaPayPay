@@ -22,9 +22,9 @@ class CustomCategoryScreen(val categoryInfo: CategoryInfo, index: Int) : ShopScr
         categoryInfo.products.forEachIndexed { i, product ->
             ItemStack(product.getActualMaterial()).apply {
                 itemMeta = itemMeta.also { meta ->
-                    meta.displayName = product.coloredName
+                    meta.displayName = product.getColoredName()
                     meta.lore = listOf(
-                        *product.coloredLore.toTypedArray(),
+                        *product.getColoredLore().toTypedArray(),
                         "",
                         "§6価格: §a${product.price}円",
                     )
@@ -49,14 +49,14 @@ class CustomCategoryScreen(val categoryInfo: CategoryInfo, index: Int) : ShopScr
             if (screen.handle(e)) return
             val data = screen.categoryInfo.products.getOrNull(e.slot - 18) ?: return
             e.whoClicked.closeInventory()
-            val url = AzisabaPayPayAPIProvider.getAPI().createQRCode(data.price, Currency.JPY, data.nameWithoutColor) {
+            val url = AzisabaPayPayAPIProvider.getAPI().createQRCode(data.price, Currency.JPY, data.getNameWithoutColor()) {
                 if (!(e.whoClicked as Player).isOnline) {
                     error("Player is offline")
                 }
                 Util.sendDiscordWebhookAsync(
                     PluginConfig.instance.discordWebhookNotifyUrl,
                     null,
-                    "Minecraft ID `${e.whoClicked.name}`の決済が完了しました。\n金額: ${data.price} JPY\n説明: ${screen.categoryInfo.name} -> ${data.nameWithoutColor}",
+                    "Minecraft ID `${e.whoClicked.name}`の決済が完了しました。\n金額: ${data.price} JPY\n説明: ${screen.categoryInfo.name} -> ${data.getNameWithoutColor()}",
                 )
                 Util.runSync {
                     data.execute(e.whoClicked as Player)

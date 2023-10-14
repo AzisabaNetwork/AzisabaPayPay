@@ -17,9 +17,9 @@ data class ProductInfo(
     val commands: List<String> = emptyList(),
     val repeatable: Boolean = true,
 ) {
-    val coloredName: String = ChatColor.translateAlternateColorCodes('&', name)
-    val nameWithoutColor: String = ChatColor.stripColor(coloredName)
-    val coloredLore: List<String> = lore.map { ChatColor.translateAlternateColorCodes('&', it) }
+    fun getColoredName(): String = ChatColor.translateAlternateColorCodes('&', name)
+    fun getNameWithoutColor(): String = ChatColor.stripColor(getColoredName())
+    fun getColoredLore(): List<String> = lore.map { ChatColor.translateAlternateColorCodes('&', it) }
 
     fun getActualMaterial() = Material.valueOf(material.uppercase())
 
