@@ -9,7 +9,6 @@ import org.bukkit.entity.Player
 @Serializable
 data class ProductInfo(
     val price: Int,
-    val dummyPrice: Int = -1,
     val material: String,
     val durability: Short = 0,
     val name: String = "§c(設定されていません)",
@@ -17,6 +16,7 @@ data class ProductInfo(
     val customModelData: Int? = null,
     val commands: List<String> = emptyList(),
     val repeatable: Boolean = true,
+    val dummyPrice: Int = -1,
 ) {
     fun getColoredName(): String = ChatColor.translateAlternateColorCodes('&', name)
     fun getNameWithoutColor(): String = ChatColor.stripColor(getColoredName())
