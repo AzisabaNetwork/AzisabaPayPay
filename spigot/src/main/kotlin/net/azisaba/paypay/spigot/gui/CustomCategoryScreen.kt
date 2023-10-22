@@ -31,7 +31,7 @@ class CustomCategoryScreen(val categoryInfo: CategoryInfo, index: Int) : ShopScr
                 val reductionPercentage = if (product.dummyPrice == 0) {
                     "-∞"
                 } else {
-                    format.format(100 - Math.round(product.price / product.dummyPrice.toDouble() * 100))
+                    format.format(100 - product.price / product.dummyPrice.toDouble() * 100)
                 }
                 "§6価格: §8§m${product.dummyPrice}円§a ${product.price}円 §6($reductionPercentage% 割引)"
             }
