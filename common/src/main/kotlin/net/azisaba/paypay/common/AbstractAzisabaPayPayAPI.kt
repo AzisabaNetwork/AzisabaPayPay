@@ -56,7 +56,7 @@ abstract class AbstractAzisabaPayPayAPI : AzisabaPayPayAPI {
                 }
                 if (response.data.status == PaymentState.StatusEnum.COMPLETED) {
                     Logger.currentLogger.info("Payment {} was success, executing callback", paymentId)
-                    onPaymentCompleted(paymentId, amount, currency, description)
+                    onPaymentCompleted(response.data.paymentId, paymentId, amount, currency, description)
                     purchased()
                 }
             } catch (e: Throwable) {

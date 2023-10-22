@@ -25,11 +25,11 @@ class AzisabaPayPayAPIImpl(plugin: JavaPlugin) : AbstractAzisabaPayPayAPI() {
         )
     }
 
-    override fun onPaymentCompleted(paymentId: String, amount: Int, currency: Currency, description: String) {
+    override fun onPaymentCompleted(paymentId: String, merchantPaymentId: String, amount: Int, currency: Currency, description: String) {
         Util.sendDiscordWebhookAsync(
             PluginConfig.instance.discordWebhookNotifyUrl,
             null,
-            "`$paymentId`の決済が完了しました。\n金額: $amount $currency\n説明: $description",
+            "`$merchantPaymentId`の決済が完了しました。\n金額: $amount $currency\n説明: $description\nPayPay側決済ID: $paymentId",
         )
     }
 
