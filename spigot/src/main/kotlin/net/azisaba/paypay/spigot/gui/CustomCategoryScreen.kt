@@ -20,13 +20,20 @@ import org.bukkit.inventory.ItemStack
 class CustomCategoryScreen(val categoryInfo: CategoryInfo, index: Int) : ShopScreen(ShopType.valueOf("Category${index + 2}"), categoryInfo.name) {
     init {
         categoryInfo.products.forEachIndexed { i, product ->
+            val lorePrice = if (product.price <= 0) {
+                "§c購入不可"
+            } else if (product.dummyPrice == -1 || product.dummyPrice == product.price) {
+                "§6価格: §a${product.price}円"
+            } else {
+                "§6価格: §8§m${product.dummyPrice}円§a ${product.price}円"
+            }
             ItemStack(product.getActualMaterial()).apply {
                 itemMeta = itemMeta.also { meta ->
                     meta.displayName = product.getColoredName()
                     meta.lore = listOf(
                         *product.getColoredLore().toTypedArray(),
                         "",
-                        "§6価格: §a${product.price}円",
+                        lorePrice,
                     )
                     meta.setCustomModelData(product.customModelData)
                 }
@@ -48,6 +55,7 @@ class CustomCategoryScreen(val categoryInfo: CategoryInfo, index: Int) : ShopScr
             val screen = e.inventory.holder as CustomCategoryScreen
             if (screen.handle(e)) return
             val data = screen.categoryInfo.products.getOrNull(e.slot - 18) ?: return
+            if (data.price <= 0) return
             e.whoClicked.closeInventory()
             val url = AzisabaPayPayAPIProvider.getAPI().createQRCode(data.price, Currency.JPY, data.getNameWithoutColor()) {
                 if (!(e.whoClicked as Player).isOnline) {

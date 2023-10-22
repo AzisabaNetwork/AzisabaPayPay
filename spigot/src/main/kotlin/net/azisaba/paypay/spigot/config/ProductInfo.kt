@@ -9,6 +9,7 @@ import org.bukkit.entity.Player
 @Serializable
 data class ProductInfo(
     val price: Int,
+    val dummyPrice: Int = -1,
     val material: String,
     val durability: Short = 0,
     val name: String = "§c(設定されていません)",
