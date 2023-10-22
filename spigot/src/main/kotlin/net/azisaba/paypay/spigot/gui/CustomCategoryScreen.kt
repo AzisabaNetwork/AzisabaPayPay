@@ -16,8 +16,11 @@ import org.bukkit.event.Listener
 import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.event.inventory.InventoryDragEvent
 import org.bukkit.inventory.ItemStack
+import java.text.DecimalFormat
 
 class CustomCategoryScreen(val categoryInfo: CategoryInfo, index: Int) : ShopScreen(ShopType.valueOf("Category${index + 2}"), categoryInfo.name) {
+    private val format = DecimalFormat("#,###.##")
+
     init {
         categoryInfo.products.forEachIndexed { i, product ->
             val lorePrice = if (product.price <= 0) {
@@ -25,7 +28,12 @@ class CustomCategoryScreen(val categoryInfo: CategoryInfo, index: Int) : ShopScr
             } else if (product.dummyPrice == -1 || product.dummyPrice == product.price) {
                 "§6価格: §a${product.price}円"
             } else {
-                "§6価格: §8§m${product.dummyPrice}円§a ${product.price}円"
+                val reductionPercentage = if (product.dummyPrice == 0) {
+                    "-∞"
+                } else {
+                    format.format(100 - Math.round(product.price / product.dummyPrice.toDouble() * 100))
+                }
+                "§6価格: §8§m${product.dummyPrice}円§a ${product.price}円 §6($reductionPercentage% 割引)"
             }
             ItemStack(product.getActualMaterial()).apply {
                 itemMeta = itemMeta.also { meta ->
