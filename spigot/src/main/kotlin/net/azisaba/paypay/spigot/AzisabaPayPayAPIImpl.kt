@@ -17,6 +17,14 @@ class AzisabaPayPayAPIImpl(plugin: JavaPlugin) : AbstractAzisabaPayPayAPI() {
 
     override fun getScheduler(): Scheduler = scheduler
 
+    override fun onPaymentCreated(paymentId: String, amount: Int, currency: Currency, description: String) {
+        Util.sendDiscordWebhookAsync(
+            PluginConfig.instance.discordWebhookNotifyUrl,
+            null,
+            "`$paymentId`の決済が作成されました(決済は完了していません)。\n金額: $amount $currency\n説明: $description",
+        )
+    }
+
     override fun onPaymentCompleted(paymentId: String, amount: Int, currency: Currency, description: String) {
         Util.sendDiscordWebhookAsync(
             PluginConfig.instance.discordWebhookNotifyUrl,

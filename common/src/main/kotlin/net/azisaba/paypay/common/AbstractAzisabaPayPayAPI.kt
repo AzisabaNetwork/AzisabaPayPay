@@ -42,6 +42,7 @@ abstract class AbstractAzisabaPayPayAPI : AzisabaPayPayAPI {
         if (details.resultInfo.code != "SUCCESS") {
             error("Something went wrong (code: ${details.resultInfo.code})")
         }
+        onPaymentCreated(paymentId, amount, currency, description)
         val start = System.currentTimeMillis()
         getScheduler().scheduleRepeatingTask(1000 * 30, 1000 * 30) {
             try {

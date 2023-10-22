@@ -17,6 +17,7 @@ interface AzisabaPayPayAPI {
 
     fun getScheduler(): Scheduler
 
+    fun onPaymentCreated(paymentId: String, amount: Int, currency: Currency, description: String) {}
     fun onPaymentCompleted(paymentId: String, amount: Int, currency: Currency, description: String) {}
     fun onPaymentCancelled(paymentId: String, amount: Int, currency: Currency, description: String) {}
 }
