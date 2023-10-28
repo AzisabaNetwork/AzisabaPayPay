@@ -65,6 +65,7 @@ class CustomCategoryScreen(val categoryInfo: CategoryInfo, index: Int) : ShopScr
             val data = screen.categoryInfo.products.getOrNull(e.slot - 18) ?: return
             if (data.price <= 0) return
             e.whoClicked.closeInventory()
+            e.whoClicked.sendMessage("${ChatColor.GRAY}QRコードを生成中です...")
             val url = AzisabaPayPayAPIProvider.getAPI().createQRCode(data.price, Currency.JPY, data.getNameWithoutColor()) {
                 if (!(e.whoClicked as Player).isOnline) {
                     error("Player is offline")

@@ -274,6 +274,7 @@ class RankScreen(private val player: Player) : ShopScreen(ShopType.Rank, "ラン
                 return e.whoClicked.sendMessage("§cこの商品は既に購入済みです！")
             }
             e.whoClicked.closeInventory()
+            e.whoClicked.sendMessage("${ChatColor.GRAY}QRコードを生成中です...")
             val url = AzisabaPayPayAPIProvider.getAPI().createQRCode(actualPrice, Currency.JPY, ChatColor.stripColor(data.name)) {
                 if (!(e.whoClicked as Player).isOnline) {
                     error("Player is offline")

@@ -78,6 +78,11 @@ open class ShopScreen(type: ShopType, title: String) : InventoryHolder {
                 return true
             }
         }
+        if (!e.whoClicked.hasPermission("azisabapaypay.buy")) {
+            e.whoClicked.closeInventory()
+            e.whoClicked.sendMessage("${ChatColor.RED}商品を購入する権限がありません！")
+            return true
+        }
         return false
     }
 
