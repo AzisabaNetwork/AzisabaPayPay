@@ -7,6 +7,7 @@ import net.azisaba.paypay.api.config.ConfigLoader
 data class PluginConfig(
     val overwrite: Boolean = false,
     val discordWebhookNotifyUrl: String = "",
+    val actOnSpecifiedCommercialTransactionsUrl: String = "",
     val categories: List<CategoryInfo> = listOf(
         CategoryInfo(
             "Test",

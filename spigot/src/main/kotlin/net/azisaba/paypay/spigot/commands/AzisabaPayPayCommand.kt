@@ -4,6 +4,9 @@ import net.azisaba.paypay.api.AzisabaPayPayAPIProvider
 import net.azisaba.paypay.spigot.config.PluginConfig
 import net.azisaba.paypay.spigot.gui.RankScreen
 import net.azisaba.paypay.spigot.util.Util
+import net.md_5.bungee.api.chat.ClickEvent
+import net.md_5.bungee.api.chat.HoverEvent
+import net.md_5.bungee.api.chat.TextComponent
 import org.bukkit.ChatColor
 import org.bukkit.command.Command
 import org.bukkit.command.CommandSender
@@ -58,7 +61,20 @@ object AzisabaPayPayCommand : TabExecutor {
                 }
             }
         }
-        sender.openInventory(RankScreen(sender).inventory)
+        if (args.getOrNull(0) == "yes") {
+            sender.openInventory(RankScreen(sender).inventory)
+        } else {
+            sender.sendMessage("§b§nhttps://link.azisaba.net/sct")
+            sender.sendMessage("§e続行する前に上記のURLを確認してください。")
+            sender.spigot().sendMessage(
+                TextComponent("✔確認したので続行する").apply {
+                    color = ChatColor.GREEN.asBungee()
+                    isUnderlined = true
+                    hoverEvent = HoverEvent(HoverEvent.Action.SHOW_TEXT, TextComponent.fromLegacyText("購入画面を表示する"))
+                    clickEvent = ClickEvent(ClickEvent.Action.RUN_COMMAND, "/azisabapaypay yes")
+                }
+            )
+        }
         return true
     }
 
@@ -70,7 +86,11 @@ object AzisabaPayPayCommand : TabExecutor {
     ): List<String> {
         if (sender.hasPermission("azisabapaypay.admin")) {
             if (args.size == 1) {
-                return listOf("cancel", "refund").filter { it.startsWith(args[0]) }
+                return listOf("yes", "cancel", "refund").filter { it.startsWith(args[0]) }
+            }
+        } else {
+            if (args.size == 1) {
+                return listOf("yes")
             }
         }
         return emptyList()
